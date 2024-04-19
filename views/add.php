@@ -2,10 +2,10 @@
 
     <h2>Add Contact</h2>
 
-    <?php if (!empty($errors)): ?>
+    <?php if (!empty($validationErrors)): ?>
     <div class="alert alert-danger" role="alert">
         <?php
-            foreach($errors as $value) {
+            foreach($validationErrors as $value) {
                 echo $value.'<br/>';
             }
         ?>
@@ -15,23 +15,23 @@
     <form action="/add" method="POST">
         <div class="form-group">
             <label for="name">Name</label>
-            <input type="text" class="form-control" id="name" name="name" required>
+            <input type="text" class="form-control" id="name" name="data[name]" required>
         </div>
         <div class="form-group">
             <label for="surname">Surname</label>
-            <input type="text" class="form-control" id="surname" name="surname" required>
+            <input type="text" class="form-control" id="surname" name="data[surname]" required>
         </div>
         <div class="form-group">
             <label for="telephone">Telephone</label>
-            <input type="text" class="form-control" id="telephone" name="telephone" required>
+            <input type="text" class="form-control" id="telephone" name="data[telephone]" required>
         </div>
         <div class="form-group">
             <label for="email">Email</label>
-            <input type="email" class="form-control" id="email" name="email" required>
+            <input type="email" class="form-control" id="email" name="data[email]" required>
         </div>
         <div class="form-group">
             <label for="address">Physical Address</label>
-            <textarea class="form-control" id="address" name="address" required></textarea>
+            <textarea class="form-control" id="address" name="data[address]" required></textarea>
         </div>
         <button type="submit" class="btn btn-primary">Add Contact</button>
     </form>

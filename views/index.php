@@ -2,12 +2,15 @@
     <h5>Contact List</h5>
 
     <form method="POST" action="" class="form-inline float-right">
-        <input type="text" class="form-control mb-2 mr-sm-2" id="name" name="name" placeholder="Search by name">
-        <input type="text" class="form-control mb-2 mr-sm-2" id="surname" name="surname" placeholder="Search by surname">
-        <input type="text" class="form-control mb-2 mr-sm-2" id="telephone" name="telephone" placeholder="Search by telephone">
-        <input type="text" class="form-control mb-2 mr-sm-2" id="email" name="email" placeholder="Search by email">
+        <input type="text" class="form-control mb-2 mr-sm-2" id="name" name="filters[name]" placeholder="Search by name">
+        <input type="text" class="form-control mb-2 mr-sm-2" id="surname" name="filters[surname]" placeholder="Search by surname">
+        <input type="text" class="form-control mb-2 mr-sm-2" id="telephone" name="filters[telephone]" placeholder="Search by telephone">
+        <input type="text" class="form-control mb-2 mr-sm-2" id="email" name="filters[email]" placeholder="Search by email">
 
         <button type="submit" class="btn btn-primary mb-2">Search</button>
+        <?php if (isset($_POST['filters'])): ?>
+        <a href="/" class="btn btn-danger mb-2 mx-2">Reset filters</a>
+        <?php endif;?>
     </form>
 
     <table class="table">
