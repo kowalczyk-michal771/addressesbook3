@@ -4,11 +4,10 @@ namespace Src\Controller;
 
 use Src\Command\AddContactCommand;
 use Src\Command\DeleteContactCommand;
-use Src\Query\ViewContactQuery;
 use Src\Infrastructure\SQLiteContactRepository;
 use Src\Validation\ContactValidator;
 
-class ContactController
+class ContactCommandController
 {
     /**
      * @var SQLiteContactRepository Database Repository
@@ -22,29 +21,6 @@ class ContactController
     public function __construct(SQLiteContactRepository $repository)
     {
         $this->repository = $repository;
-    }
-
-    /**
-     * @param array $filters
-     */
-    public function index(array $filters = []): void
-    {
-        $query = new ViewContactQuery($this->repository);
-        $contacts = $query->execute($filters);
-
-        require __DIR__ . '/../../views/index.php';
-    }
-
-    /**
-     * Shows add contact form
-     */
-    public function showAddForm(): void
-    {
-        if (isset($_GET['errors'])) {
-            $errors = ContactValidator::validateErrors($_GET['errors']);
-        }
-
-        require __DIR__ . '/../../views/add.php';
     }
 
     /**
